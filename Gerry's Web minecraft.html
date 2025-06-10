@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerry's Web</title>
+  <link rel="icon" type="image/png" href="img/Gerry's Web.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0a0a0a;
+      --text-color: #ffffff;
+      --accent-color: #fc0000;
+      --navbar-bg: rgba(0, 0, 0, 0.8);
+    }
+    
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    html, body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+      height: 100%;
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #0a0a0a;
+      backdrop-filter: blur(10px);
+      z-index: 999;
+      animation: slideDown 0.8s ease-in-out;
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    nav a {
+      color: var(--text-color);
+      margin-left: 20px;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s, transform 0.2s ease;
+    }
+    nav a:hover {
+      color: var(--accent-color);
+      transform: scale(1.05);
+    }
+    nav a:active {
+      transform: scale(0.95);
+    }
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background-color: var(--accent-color);
+    }
+    
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 80px 20px;
+      min-height: 100vh;
+      z-index: 1;
+      text-align: left;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s ease-in-out;
+    }
+    
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin-left: 10%;
+      animation: fadeUp 1s ease forwards;
+    }
+    .hero-text h1 {
+      font-size: 3em;
+      font-weight: 900;
+    }
+    .hero-text h2 {
+      font-size: 2.5em;
+      color: var(--accent-color);
+      font-weight: 900;
+      margin: 10px 0;
+    }
+    .hero-text p {
+      margin-top: 20px;
+      font-weight: 400;
+      text-align: justify;
+    }
+
+    .hero-text button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: var(--accent-color);
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s;
+    }
+    .hero-text button:hover {
+      background-color: #000000;
+      transform: scale(1.05);
+      color: white;
+    }
+    .hero-text button:active {
+      transform: scale(0.95);
+    }
+    section {
+      padding: 100px 20px 60px;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: var(--accent-color);
+    }
+    .about, .streams, .contact {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.1em;
+      text-align: justify;
+      line-height: 2;
+    }
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+    }
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        display: none;
+        width: 100%;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      nav.active {
+        display: flex;
+      }
+      nav a {
+        margin: 10px 0;
+      }
+      .theme-toggle {
+        margin-left: 0;
+      }
+      .hero-text {
+        margin-left: 0;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="font-weight: 900;">GERRY'S <span style="color: red;">WEB</span></h1>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="navbar">
+      <a href="#" class="nav-link active">HOME</a>
+      <a href="#about" class="nav-link">ABOUT</a>
+      <a href="#streams" class="nav-link">STREAMS</a>
+      <a href="#contact" class="nav-link">CONTACT</a>
+    </nav>
+  </header>
+
+ <section class="hero" id="hero-section">
+  <div class="hero-text">
+    <h1>Minecraft</h1>
+    <h2>Mojang</h2>
+    <p>Jelajahi dunia terbuka dengan membangun, membuat item, dan bertahan hidup di game sandbox membangun terbaik.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=id"><button>Download on App</button></a>
+  </div>
+</section>
+
+
+  <section id="about">
+    <h2>About Game</h2>
+    <div class="about">
+      <p>Kumpulkan sumber daya, coba bertahan hidup di malam hari, dan rancang petualangan epik balok demi balok. Jelajahi dan buat item sesuka hati di dunia yang terbuka sepenuhnya tempat kamu bisa bermain dengan teman, membangun kota balok, membuka peternakan, menambang jauh ke bawah tanah, menghadapi musuh misterius, atau sekadar bereksperimen sejauh imajinasi membawamu!</p>
+      <br>
+      <p>Buat rumah, bangun kota, atau buka peternakan. Wujudkan imajinasi selagi membangun dunia - dengan kemungkinan tanpa batas. Jelajahi game online buatanmu sendiri dan mainkan bersama teman. Buat dan bangun apa saja dari nol. Bangun dan perluas semuanya di mode Creative, tempat kamu bisa membuat apa saja dengan sumber daya tanpa batas. Cobalah bertahan hidup di malam hari, hadapi pertempuran sengit, buat aneka alat, dan atasi bahaya di mode Survival. Dengan gameplay lintas platform dan multiplayer yang mulus di Minecraft: Bedrock Edition, kamu bisa bertualang solo atau dengan teman, serta menemukan dunia tanpa batas yang dibuat secara acak dan penuh dengan balok-balok untuk ditambang, bioma untuk dijelajahi, dan mob untuk diajak berteman (atau dilawan)!</p>
+
+    </div>
+  </section>
+
+  <section id="streams">
+    <h2>Our Streams</h2>
+    <div class="streams">
+      <p>Saksikan kami secara langsung di Twitch, YouTube, dan Facebook Gaming. Kami menyiarkan pertandingan kompetitif, sesi latihan, dan acara khusus. Ikuti saluran sosial kami untuk tetap mendapatkan informasi terbaru dan jangan lewatkan satu pertandingan pun!</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact">
+      <p>...</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; GERRY'S WEB. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+    }
+
+    function toggleMenu() {
+      document.getElementById('navbar').classList.toggle('active');
+    }
+
+    // Update active link on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    const heroImages = [
+    'img/mc-slide1.jpg',
+    'img/mc-slide2.jpg',
+    'img/mc-slide3.jpg'
+  ];
+
+  let currentImg = 0;
+  const heroSection = document.getElementById('hero-section');
+
+  function updateHeroBackground() {
+    heroSection.style.backgroundImage = `url(${heroImages[currentImg]})`;
+    currentImg = (currentImg + 1) % heroImages.length;
+  }
+
+  updateHeroBackground();
+  setInterval(updateHeroBackground, 5000);
+  </script>
+</body>
+</html>
